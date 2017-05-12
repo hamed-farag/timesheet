@@ -1,0 +1,66 @@
+{
+    "GetAssignedTasks": {
+        "Tasks": [{
+            "label": "project016",
+            "projectName": "project016",
+            "projectId": "a0000000-0000-0000-0000-000000000016",
+            "children": [{
+                "rowId": 0,
+                "taskId": "cee952b3-86dc-429c-b41c-278818b1948e",
+                "taskName": null,
+                "label": "Task Name",
+                "Cells": null
+            }],
+            "tasks": null
+        }]
+    },
+    "GetTimeSheet": {
+        "timeSheet": [{
+            "label": null,
+            "projectName": "project016",
+            "projectId": "a0000000-0000-0000-0000-000000000016",
+            "children": null,
+            "tasks": [{
+                "rowId": 0,
+                "taskId": "cee952b3-86dc-429c-b41c-278818b1948e",
+                "taskName": "Task Name",
+                "label": "Task Name",
+                "Cells": [{
+                    "CellID": "04156f69-0556-4613-aba2-2e0a5400bdd4",
+                    "DayName": "Monday",
+                    "Value": 24.00,
+                    "date": "20170508",
+                    "DateKey": 20170508,
+                    "Comment": null,
+                    "ApproverComment": null,
+                    "RequestID": null,
+                    "IsHoliday": false,
+                    "DayOfWeek": "2",
+                    "RequestType": null,
+                    "IsEditable": true,
+                    "CellStatus": "d0000000-0000-0000-0000-000000000001",
+                    "IsApproved": false,
+                    "IsRejected": false,
+                    "IsPending": false
+                }, {
+                    "CellID": "f7ed40ae-0335-4a4f-ad90-97c74924dab5",
+                    "DayName": "Sunday",
+                    "Value": 1.00,
+                    "date": "20170507",
+                    "DateKey": 20170507,
+                    "Comment": "dfgh",
+                    "ApproverComment": null,
+                    "RequestID": null,
+                    "IsHoliday": false,
+                    "DayOfWeek": "1",
+                    "RequestType": null,
+                    "IsEditable": true,
+                    "CellStatus": "a0000000-0000-0000-0000-000000000001",
+                    "IsApproved": false,
+                    "IsRejected": false,
+                    "IsPending": false
+                }]
+            }]
+        }]
+    }
+}

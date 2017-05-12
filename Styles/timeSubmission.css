@@ -1,0 +1,90 @@
+span.jqtree-dragging{
+    z-index: 9;
+}
+
+.time-cover {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: rgba(0,0,0,0.2);
+    display: none;
+}
+
+#timeSubmissionBody input[type=text] {
+    width: 25px;
+    height: 18px;
+    border-width: 0.1px;
+}
+
+#timeSubmissionBody td{
+    
+}
+
+.wrongNumber {
+    background-color: rgba(255,0,0,1) !important;
+}
+
+.pendingCell {
+    color:gray !important;
+    font-wight: bold;
+}
+
+.approvedCell {
+    color:green !important;
+}
+
+.rejectedCell {
+    color:red !important;
+}
+
+
+.datepicker .datepicker-days tr td.active ~ td,
+.datepicker .datepicker-days tr td.active {
+    color: #af1623 !important;
+    background: transparent !important;
+}
+
+.datepicker .datepicker-days tr:hover td {
+    color: #000;
+    background: #e5e2e3;
+    border-radius: 0;
+}
+
+.commentCell {
+    position: relative;
+    float: right;
+    top: -11px;
+    right: -8px;
+}
+
+
+#divWeekpicker{
+    padding: 2px 0px 0px 1px;
+}
+
+.holiday{
+    background-color:rgba(128,128,128,0.1) ;
+}
+
+.totalTime{
+    background-color: rgba(128,128,128,0.5);
+}
+
+#divWeekpicker span:last-child{
+    cursor: pointer;
+}
+
+.smart-form.widget-body-toolbar, .widget-body-toolbar{
+    margin: -13px -13px 0px !important;
+}
+
+.link-comment{
+    opacity: 0.3;
+}
+
+.hasComment{
+    opacity: 1 !important;
+}

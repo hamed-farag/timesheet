@@ -2,7 +2,7 @@
 window.timeSubmission.vm = (function (model, business) {
 
     // View For Bind the ViewModel On it
-    var $view = $("#timeSumbmissionArea");
+    var $view = $("#timeSubmissionContainer");
     var $weekPicker = $('#weekpicker');
     var dateFormat = function (date) {
         return ("0" + date).slice(-2);
@@ -82,7 +82,7 @@ window.timeSubmission.vm = (function (model, business) {
             var formattedDate = dateFormat(tempDate.getDate()) + '/' + dateFormat((tempDate.getMonth() + 1));
 
             self.weekDays.push({
-                day: "Sunday",
+                day: "Sun,",
                 date: formattedDate
             });
 
@@ -93,37 +93,37 @@ window.timeSubmission.vm = (function (model, business) {
                 switch (index) {
                     case 1:
                         self.weekDays.push({
-                            day: "Monday",
+                            day: "Mon,",
                             date: formattedDate
                         });
                         break;
                     case 2:
                         self.weekDays.push({
-                            day: "Tuesday",
+                            day: "Tues,",
                             date: formattedDate
                         });
                         break;
                     case 3:
                         self.weekDays.push({
-                            day: "Wednesday",
+                            day: "Wed,",
                             date: formattedDate
                         });
                         break;
                     case 4:
                         self.weekDays.push({
-                            day: "Thursday",
+                            day: "Thu,",
                             date: formattedDate
                         });
                         break;
                     case 5:
                         self.weekDays.push({
-                            day: "Friday",
+                            day: "Fri,",
                             date: formattedDate
                         });
                         break;
                     case 6:
                         self.weekDays.push({
-                            day: "Saturday",
+                            day: "Sat,",
                             date: formattedDate
                         });
                         break;
@@ -229,7 +229,7 @@ window.timeSubmission.vm = (function (model, business) {
         /////////////////////////////////////////////////////////////////////
 
         self.dragTreeMove = function (node, event) {
-            $(".time-cover").css("display", "block");
+            $(".timeCover").css("display", "block");
         };
         self.dragTreeStop = function (node, event) {
 
@@ -274,7 +274,7 @@ window.timeSubmission.vm = (function (model, business) {
                     targetProject.tasks.push(newTask);
                 }
             }
-            $(".time-cover").css("display", "none");
+            $(".timeCover").css("display", "none");
         };
         self.dataTree = assignedTasks;
 

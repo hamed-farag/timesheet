@@ -2,125 +2,122 @@
 
 <head>
     <title>Time Submission</title>
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"
+    />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="./Styles/jqtree.css" rel="stylesheet" type="text/css" />
     <link href="./Styles/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
     <link href="./Styles/timeSubmission.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-
-    <div id="timeSumbmissionArea">
+<body id="timeSubmissionContainer">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3">
-                <h2>Assigned Tasks</h2>
+            <div class="col-lg-3 taskContainer">
+                <h2>Tasks</h2>
                 <div id="task-tree" data-bind="jqTree : {data: dataTree, dragMove: dragTreeMove, dragStop: dragTreeStop}"></div>
             </div>
-            <div class="col-lg-9">
-                <h2>Time Submission</h2>
-                <input type="button" value="Submit" data-bind='click: submitSheet' />
-                <div class="row">
-                    <div id="divWeekpicker">
-                        <b><span>Week No. </span><span data-bind="text: weekNumber" style="font-size: 16px;"></span>,&nbsp;&nbsp;&nbsp;<span data-bind="weekPicker : {weekChange : weekChange }" id="weekpicker"></span></b>
+            <div class="col-lg-9 timeSheetContainer">
+                <div>
+                    <div class="weekPicker">
+                        <span class="week" data-bind="weekPicker : {weekChange : weekChange }" id="weekpicker"></span>
+                        <i class="fa  fa-calendar"></i>
                     </div>
-                    <div id="calendar-buttons">
-                        <div class="btn-group">
-                            <a href="javascript:void(0)" class="btn btn-default btn-xs" data-bind="click: preWeek"><i class="fa fa-chevron-left"></i>previous</a>
-                            <a href="javascript:void(0)" class="btn btn-default btn-xs" data-bind="click: currentWeek">today</a>
-                            <a href="javascript:void(0)" class="btn btn-default btn-xs" data-bind="click: nextWeek"><i class="fa fa-chevron-right"></i>next</a>
-                        </div>
+                    <div class="weePickerNavigation">
+                        <a data-bind="click: preWeek"><i class="fa fa-arrow-left"></i></a>
+                        <a data-bind="click: currentWeek">Today</a>
+                        <a data-bind="click: nextWeek"><i class="fa fa-arrow-right"></i></a>
+                    </div>
+                    <div class="week-info pull-right">
+                        Week No. <span data-bind="text: weekNumber"></span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="time-cover" data-target="true">
-                        <span class="fa fa-plus-square" style="color: black; opacity: 0.4; position: absolute; top: 50%; left: 50%; font-size: 35px;"></span>
-                    </div>
-                    <div class="time-Grid">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" data-bind=''>
-                                <thead>
-                                    <tr>
-                                        <th>Task Name</th>
-                                        <!-- ko foreach: weekDays -->
-                                        <th><span data-bind="text: day"></span><br />
-                                            <span data-bind="text: date"></span>
-                                        </th>
-                                        <!-- /ko -->
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="timeSubmissionBody" data-bind='foreach: { data: projects(), afterAdd : $root.animateRow  }'>
-                                    <!-- ko foreach: { data: tasks } -->
-                                    <tr>
-                                        <td>
-                                            <span data-bind='text: taskName, uniqueName: true'></span>
-                                        </td>
-                                        <td data-day="sunday" data-bind="event : { click: $root.EditCell }, css: sunday.cellStyle">
-                                            <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : sunday.hasComment }" class="fa fa-comment link-comment"></span></a>
-                                            <span data-day="sunday" data-bind='text: sunday.value, visible: !sunday.show(), click: $root.EditCell'></span>
-                                            <input maxlength="2" data-day="sunday" type="text" data-bind='disable:!sunday.isEditable,value: sunday.value, visible: sunday.show, hasFocus: sunday.show, event: { blur: $root.checkEditing }'
-                                            />
-                                        </td>
-                                        <td data-day="monday" data-bind="event : { click: $root.EditCell }, css: monday.cellStyle">
-                                            <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : monday.hasComment }" class="fa fa-comment link-comment"></span></a>
-                                            <span data-day="monday" data-bind='text: monday.value, visible: !monday.show(), click: $root.EditCell'></span>
-                                            <input maxlength="2" data-day="monday" type="text" data-bind='disable:!monday.isEditable,value: monday.value, visible: monday.show, hasFocus: monday.show, event: { blur: $root.checkEditing }'
-                                            />
-                                        </td>
-                                        <td data-day="tuesday" data-bind="event : { click: $root.EditCell }, css: tuesday.cellStyle">
-                                            <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : tuesday.hasComment }" class="fa fa-comment link-comment"></span></a>
-                                            <span data-day="tuesday" data-bind='text: tuesday.value, visible: !tuesday.show(), click: $root.EditCell'></span>
-                                            <input maxlength="2" data-day="tuesday" type="text" data-bind='disable:!tuesday.isEditable,value: tuesday.value, visible: tuesday.show, hasFocus: tuesday.show, event: { blur: $root.checkEditing }'
-                                            />
-                                        </td>
-                                        <td data-day="wednesday" data-bind="event : { click: $root.EditCell }, css: wednesday.cellStyle ">
-                                            <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : wednesday.hasComment }" class="fa fa-comment link-comment"></span></a>
-                                            <span data-day="wednesday" data-bind='text: wednesday.value, visible: !wednesday.show(), click: $root.EditCell'></span>
-                                            <input maxlength="2" data-day="wednesday" type="text" data-bind='disable:!wednesday.isEditable,value: wednesday.value, visible: wednesday.show, hasFocus: wednesday.show, event: { blur: $root.checkEditing }'
-                                            />
-                                        </td>
-                                        <td data-day="thursday" data-bind="event : { click: $root.EditCell } , css: thursday.cellStyle ">
-                                            <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : thursday.hasComment }" class="fa fa-comment link-comment"></span></a>
-                                            <span data-day="thursday" data-bind='text: thursday.value, visible: !thursday.show(), click: $root.EditCell'></span>
-                                            <input maxlength="2" data-day="thursday" type="text" data-bind='disable:!thursday.isEditable,value: thursday.value, visible: thursday.show, hasFocus: thursday.show, event: { blur: $root.checkEditing }'
-                                            />
-                                        </td>
-                                        <td class="holiday" data-day="friday" data-bind="event : { click: $root.EditCell }, css: friday.cellStyle">
-                                            <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : friday.hasComment }" class="fa fa-comment link-comment"></span></a>
-                                            <span data-day="friday" data-bind='text: friday.value, visible: !friday.show(), click: $root.EditCell'></span>
-                                            <input maxlength="2" data-day="friday" type="text" data-bind='disable:!friday.isEditable,value: friday.value, visible: friday.show, hasFocus: friday.show, event: { blur: $root.checkEditing }'
-                                            />
-                                        </td>
-                                        <td class="holiday" data-day="saturday" data-bind="event : { click: $root.EditCell }, css: saturday.cellStyle">
-                                            <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : saturday.hasComment }" class="fa fa-comment link-comment"></span></a>
-                                            <span data-day="saturday" data-bind='text: saturday.value, visible: !saturday.show(), click: $root.EditCell'></span>
-                                            <input maxlength="2" data-day="saturday" type="text" data-bind='disable:!saturday.isEditable,value: saturday.value, visible: saturday.show, hasFocus: saturday.show, event: { blur: $root.checkEditing }'
-                                            />
-                                        </td>
-                                        <td class="totalTime">
-                                            <b><span data-bind='text: totalTask.value()'></span></b>
-                                        </td>
-                                    </tr>
+                <div class="timeSheet">
+                    <div class="table-responsive">
+                        <div class="timeCover" data-target="true">
+                            <span class="fa fa-plus-square" style="color: black; opacity: 0.5; position: absolute; top: 50%; left: 50%; font-size: 35px;"></span>
+                        </div>
+                        <table class="table table-bordered timeSheetTable" data-bind=''>
+                            <thead>
+                                <tr>
+                                    <th>Task Name</th>
+                                    <!-- ko foreach: weekDays -->
+                                    <th><span data-bind="text: day"></span> <span data-bind="text: date"></span></th>
                                     <!-- /ko -->
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Total</th>
-                                        <th class="totalTime"><span data-bind='text: totalSunday()'></span></th>
-                                        <th class="totalTime"><span data-bind='text: totalMonday()'></span></th>
-                                        <th class="totalTime"><span data-bind='text: totalTuesday()'></span></th>
-                                        <th class="totalTime"><span data-bind='text: totalWednesday()'></span></th>
-                                        <th class="totalTime"><span data-bind='text: totalThursday()'></span></th>
-                                        <th class="totalTime"><span data-bind='text: totalFriday()'></span></th>
-                                        <th class="totalTime"><span data-bind='text: totalSaturday()'></span></th>
-                                        <th class="totalTime"><span data-bind='text: totalSubTotal()'></span></th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind='foreach: { data: projects(), afterAdd : $root.animateRow  }'>
+                                <!-- ko foreach: { data: tasks } -->
+                                <tr>
+                                    <td>
+                                        <span data-bind='text: taskName, uniqueName: true'></span>
+                                    </td>
+                                    <td data-day="sunday" data-bind="event : { click: $root.EditCell }, css: sunday.cellStyle">
+                                        <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : sunday.hasComment }" class="fa fa-comment link-comment"></span></a>
+                                        <span class="time" data-day="sunday" data-bind='text: sunday.value, visible: !sunday.show(), click: $root.EditCell'></span>
+                                        <input maxlength="2" data-day="sunday" type="text" data-bind='disable:!sunday.isEditable,value: sunday.value, visible: sunday.show, hasFocus: sunday.show, event: { blur: $root.checkEditing }'
+                                        />
+                                    </td>
+                                    <td data-day="monday" data-bind="event : { click: $root.EditCell }, css: monday.cellStyle">
+                                        <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : monday.hasComment }" class="fa fa-comment link-comment"></span></a>
+                                        <span class="time" data-day="monday" data-bind='text: monday.value, visible: !monday.show(), click: $root.EditCell'></span>
+                                        <input maxlength="2" data-day="monday" type="text" data-bind='disable:!monday.isEditable,value: monday.value, visible: monday.show, hasFocus: monday.show, event: { blur: $root.checkEditing }'
+                                        />
+                                    </td>
+                                    <td data-day="tuesday" data-bind="event : { click: $root.EditCell }, css: tuesday.cellStyle">
+                                        <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : tuesday.hasComment }" class="fa fa-comment link-comment"></span></a>
+                                        <span class="time" data-day="tuesday" data-bind='text: tuesday.value, visible: !tuesday.show(), click: $root.EditCell'></span>
+                                        <input maxlength="2" data-day="tuesday" type="text" data-bind='disable:!tuesday.isEditable,value: tuesday.value, visible: tuesday.show, hasFocus: tuesday.show, event: { blur: $root.checkEditing }'
+                                        />
+                                    </td>
+                                    <td data-day="wednesday" data-bind="event : { click: $root.EditCell }, css: wednesday.cellStyle ">
+                                        <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : wednesday.hasComment }" class="fa fa-comment link-comment"></span></a>
+                                        <span class="time" data-day="wednesday" data-bind='text: wednesday.value, visible: !wednesday.show(), click: $root.EditCell'></span>
+                                        <input maxlength="2" data-day="wednesday" type="text" data-bind='disable:!wednesday.isEditable,value: wednesday.value, visible: wednesday.show, hasFocus: wednesday.show, event: { blur: $root.checkEditing }'
+                                        />
+                                    </td>
+                                    <td data-day="thursday" data-bind="event : { click: $root.EditCell } , css: thursday.cellStyle ">
+                                        <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : thursday.hasComment }" class="fa fa-comment link-comment"></span></a>
+                                        <span class="time" data-day="thursday" data-bind='text: thursday.value, visible: !thursday.show(), click: $root.EditCell'></span>
+                                        <input maxlength="2" data-day="thursday" type="text" data-bind='disable:!thursday.isEditable,value: thursday.value, visible: thursday.show, hasFocus: thursday.show, event: { blur: $root.checkEditing }'
+                                        />
+                                    </td>
+                                    <td class="holiday" data-day="friday" data-bind="event : { click: $root.EditCell }, css: friday.cellStyle">
+                                        <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : friday.hasComment }" class="fa fa-comment link-comment"></span></a>
+                                        <span class="time" data-day="friday" data-bind='text: friday.value, visible: !friday.show(), click: $root.EditCell'></span>
+                                        <input maxlength="2" data-day="friday" type="text" data-bind='disable:!friday.isEditable,value: friday.value, visible: friday.show, hasFocus: friday.show, event: { blur: $root.checkEditing }'
+                                        />
+                                    </td>
+                                    <td class="holiday" data-day="saturday" data-bind="event : { click: $root.EditCell }, css: saturday.cellStyle">
+                                        <a href="#" class="commentCell" data-bind="click: $root.showCommentPopup, clickBubble: false"><span data-bind="css : { hasComment : saturday.hasComment }" class="fa fa-comment link-comment"></span></a>
+                                        <span class="time" data-day="saturday" data-bind='text: saturday.value, visible: !saturday.show(), click: $root.EditCell'></span>
+                                        <input maxlength="2" data-day="saturday" type="text" data-bind='disable:!saturday.isEditable,value: saturday.value, visible: saturday.show, hasFocus: saturday.show, event: { blur: $root.checkEditing }'
+                                        />
+                                    </td>
+                                    <td class="totalTime">
+                                        <span data-bind='text: totalTask.value()'></span>
+                                    </td>
+                                </tr>
+                                <!-- /ko -->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Total</th>
+                                    <th class="time"><span data-bind='text: totalSunday()'></span></th>
+                                    <th class="time"><span data-bind='text: totalMonday()'></span></th>
+                                    <th class="time"><span data-bind='text: totalTuesday()'></span></th>
+                                    <th class="time"><span data-bind='text: totalWednesday()'></span></th>
+                                    <th class="time"><span data-bind='text: totalThursday()'></span></th>
+                                    <th class="time"><span data-bind='text: totalFriday()'></span></th>
+                                    <th class="time"><span data-bind='text: totalSaturday()'></span></th>
+                                    <th class="time"><span data-bind='text: totalSubTotal()'></span></th>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </div>
+                <input class="primary-btn pull-right" type="button" value="Submit" data-bind='click: submitSheet' />
                 <div data-bind="modal: {visible: modalVisible, dialogCss: modalSize, header: { data: { label: headerLabel } }, body: { name: bodyTemplate, data: bodyData }, footer: { data: { action: saveComment, cancelAction : cancelComment,  closeLabel: 'Cancel', primaryLabel: 'Save' } }}"></div>
             </div>
         </div>

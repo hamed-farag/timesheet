@@ -1,90 +1,212 @@
-span.jqtree-dragging{
-    z-index: 9;
+#timeSubmissionContainer {}
+
+#timeSubmissionContainer .taskContainer {
+    height: 100%;
+    background: #22345E;
+    color: #FFF;
+    padding: 10px;
 }
 
-.time-cover {
+#timeSubmissionContainer .timeSheetContainer {
+    height: 100%;
+    padding: 20px;
+}
+
+#timeSubmissionContainer .timeSheetContainer .primary-btn {
+    border: 0;
+    color: #FFF;
+    background-color: #59A5FE;
+    padding: 5 20px;
+    border-radius: 2px;
+    font-size: 13px;
+}
+
+#timeSubmissionContainer .timeSheetContainer .weekPicker {
+    width: 210px;
+    float: left;
+    padding: 9px;
+    border-radius: 2px;
+    border: 1px solid #F0F2F6;
+}
+
+#timeSubmissionContainer .timeSheetContainer .week-info {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #f0f2f6;
+    box-sizing: content-box !important;
+    line-height: 17px;
+    border-radius: 2px;
+    color: #337ab7;
+}
+
+#timeSubmissionContainer .timeSheetContainer .weekPicker:hover {
+    background: #f9f9f9;
+}
+
+#timeSubmissionContainer .timeSheetContainer .weekPicker .week {
+    margin: -10px;
+    padding: 11px;
+    margin-right: -42px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+#timeSubmissionContainer .timeSheetContainer .weekPicker i {
+    color: #337AB7;
+    margin-left: 15px;
+    pointer-events: none;
+}
+
+#timeSubmissionContainer .timeSheetContainer .weePickerNavigation {
+    float: left;
+    margin-left: 10px;
+    width: 165px;
+}
+
+#timeSubmissionContainer .timeSheetContainer .weePickerNavigation a {
+    line-height: 40px;
+    border: 1px solid #F0F2F6;
+    padding: 11px;
+    border-radius: 2px;
+    text-decoration: none;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+#timeSubmissionContainer .timeSheetContainer .weePickerNavigation a:hover {
+    color: #337ab7;
+    background: #f9f9f9;
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet {
+    clear: both;
+    padding: 20px 0;
+    position: relative;
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeCover {
     position: absolute;
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 999;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.2);
     display: none;
 }
 
-#timeSubmissionBody input[type=text] {
-    width: 25px;
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable {
+    border: 0;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable * {
+    border: 0 !important;
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable thead tr {
+    border-bottom: 1px solid #E5E5E5 !important;
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable thead tr th,
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody tr td {
+    padding: 15px 0;
+    position: relative;
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody tr .totalTime span {
+    padding: 1px 0;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody tr {
+    border-bottom: 1px solid #E5E5E5 !important;
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody tr td a {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody tr td input[type=text] {
+    box-sizing: content-box !important;
+    padding: 2px 14px;
     height: 18px;
-    border-width: 0.1px;
+    width: 30px;
+    border: 1px solid #E4E4E6 !important;
+    outline: none;
+    border-radius: 2px;
+    direction: rtl;
 }
 
-#timeSubmissionBody td{
-    
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody tr td .time {
+    padding: 1px 14px;
+    height: 24px;
+    width: 60px;
+    border: 1px solid #E4E4E6 !important;
+    display: block;
+    direction: rtl;
 }
 
-.wrongNumber {
-    background-color: rgba(255,0,0,1) !important;
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody tr td .link-comment {
+    opacity: 0.3;
 }
 
-.pendingCell {
-    color:gray !important;
-    font-wight: bold;
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody tr td .hasComment {
+    opacity: 1 !important;
 }
 
-.approvedCell {
-    color:green !important;
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody .holiday .time,
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody .holiday input[type=text] {
+    background-color: rgba(128, 128, 128, 0.1);
 }
 
-.rejectedCell {
-    color:red !important;
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody .wrongNumber .time,
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody .wrongNumber input[type=text] {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody .approvedCell .time,
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody .approvedCell input[type=text] {
+    background-color: rgba(30, 177, 52, 0.5);
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody .rejectedCell .time,
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody .rejectedCell input[type=text] {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody .pendingCell .time,
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tbody .pendingCell input[type=text] {
+    background-color: rgba(34, 0, 255, 0.5);
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tfoot th {
+    padding: 10px 0;
+}
+
+#timeSubmissionContainer .timeSheetContainer .timeSheet .timeSheetTable tfoot .time {
+    padding: 10px 0;
+    text-align: center;
 }
 
 
-.datepicker .datepicker-days tr td.active ~ td,
-.datepicker .datepicker-days tr td.active {
-    color: #af1623 !important;
-    background: transparent !important;
+/*//////////////////////////////////////////////////////////////////////////*/
+
+
+/*//////////////////////////////////////////////////////////////////////////*/
+
+span.jqtree-dragging {
+    z-index: 9;
 }
 
 .datepicker .datepicker-days tr:hover td {
     color: #000;
     background: #e5e2e3;
     border-radius: 0;
-}
-
-.commentCell {
-    position: relative;
-    float: right;
-    top: -11px;
-    right: -8px;
-}
-
-
-#divWeekpicker{
-    padding: 2px 0px 0px 1px;
-}
-
-.holiday{
-    background-color:rgba(128,128,128,0.1) ;
-}
-
-.totalTime{
-    background-color: rgba(128,128,128,0.5);
-}
-
-#divWeekpicker span:last-child{
-    cursor: pointer;
-}
-
-.smart-form.widget-body-toolbar, .widget-body-toolbar{
-    margin: -13px -13px 0px !important;
-}
-
-.link-comment{
-    opacity: 0.3;
-}
-
-.hasComment{
-    opacity: 1 !important;
 }
